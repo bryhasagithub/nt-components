@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './GameCard.css'
 
 const GAME_COLORS = {
@@ -22,6 +22,8 @@ export function GameCard({
   accentColor,
   ...props
 }) {
+  const [imgError, setImgError] = useState(false)
+  const showImg = imageUrl && !imgError
   const color = accentColor || GAME_COLORS[name?.toLowerCase()] || GAME_COLORS.default
   return (
     <a
@@ -33,8 +35,13 @@ export function GameCard({
     >
       {badge && <span className="nuts-game-card__badge">{badge}</span>}
       <div className="nuts-game-card__media">
-        {imageUrl ? (
-          <img src={imageUrl} alt={imageAlt || name} className="nuts-game-card__img" />
+        {showImg ? (
+          <img
+            src={imageUrl}
+            alt={imageAlt || name}
+            className="nuts-game-card__img"
+            onError={() => setImgError(true)}
+          />
         ) : (
           <div className="nuts-game-card__placeholder">{name?.slice(0, 2) || '??'}</div>
         )}

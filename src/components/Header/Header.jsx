@@ -1,19 +1,20 @@
-import React from 'react'
-import { Logo } from '../Logo/Logo'
-import { BalanceDisplay } from '../BalanceDisplay/BalanceDisplay'
-import { Button } from '../Button/Button'
-import './Header.css'
-
-/** Default rank icon path. Place rank-icon.png in public/ or pass rankIconUrl. */
-const DEFAULT_RANK_ICON = '/rank-icon.png'
+import React, { useState } from "react"
+import { Logo } from "../Logo/Logo"
+import { BalanceDisplay } from "../BalanceDisplay/BalanceDisplay"
+import { Button } from "../Button/Button"
+import { DEFAULT_RANK_ICON } from "../../lib/rankIcons"
+import "./Header.css"
 
 export function Header({
-  username = 'breee',
-  balanceUsd = '$6.03',
-  balanceSol = '0.06998309',
+  username = "breee",
+  balanceUsd = "$6.03",
+  balanceSol = "0.06998309",
   showDeposit = true,
   rankIconUrl = DEFAULT_RANK_ICON,
 }) {
+  const [rankIconError, setRankIconError] = useState(false)
+  const showRankImg = rankIconUrl && !rankIconError
+
   return (
     <header className="nuts-header">
       <div className="nuts-header__inner">
@@ -31,19 +32,27 @@ export function Header({
             {username}
           </a>
           <div className="nuts-header__league" title="Rank">
-            {rankIconUrl ? (
+            {showRankImg ? (
               <img
                 src={rankIconUrl}
                 alt=""
                 className="nuts-header__rank-icon"
                 width={40}
                 height={40}
+                onError={() => setRankIconError(true)}
               />
             ) : (
-              <span className="nuts-header__league-placeholder" title="League" />
+              <span
+                className="nuts-header__league-placeholder"
+                title="League"
+              />
             )}
           </div>
-          <button type="button" className="nuts-header__menu-btn" aria-label="Menu">
+          <button
+            type="button"
+            className="nuts-header__menu-btn"
+            aria-label="Menu"
+          >
             <span />
             <span />
             <span />

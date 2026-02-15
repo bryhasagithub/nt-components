@@ -52,6 +52,13 @@
   flex-shrink: 0;
 }
 
+.nuts-header__rank-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
 .nuts-header__league-placeholder {
   width: 32px;
   height: 32px;

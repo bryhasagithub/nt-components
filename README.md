@@ -49,6 +49,15 @@ Place (or keep) these in `public/` so they show in the “Reference Screenshots�
 - `hi-lo.png`
 - `homepage-withchatbox.png`
 
+## Homepage tiles and rank icons
+
+To match the reference screenshots, add your assets as follows:
+
+- **Game tiles** – Put one image per game in `public/tiles/` with lowercase filenames:
+  - `blackjack.png`, `chicken.png`, `darts.png`, `keno.png`, `plinko.png`, `mines.png`, `dice.png`, `tower.png`
+  - The homepage grid will use these automatically; if a file is missing, the card shows a placeholder.
+- **User rank icon** – Put your rank icon at `public/rank-icon.png`. It appears in the header next to the username (e.g. the purple diamond in the reference). You can also pass a custom `rankIconUrl` to the `Header` component.
+
 ## Tech
 
 - React 18
