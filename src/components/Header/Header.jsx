@@ -23,7 +23,7 @@ export function Header({
           <BalanceDisplay usd={balanceUsd} sol={balanceSol} />
           {showDeposit && (
             <Button as="a" href="/wallet/deposit" variant="primary">
-              Deposit
+              DEPOSIT
             </Button>
           )}
         </div>
@@ -48,12 +48,19 @@ export function Header({
               />
             )}
           </div>
+          <div className="nuts-header__progress-wrap" title="Level progress">
+            <div className="nuts-header__progress-bar">
+              <div
+                className="nuts-header__progress-fill"
+                style={{ height: "35%" }}
+              />
+            </div>
+          </div>
           <button
             type="button"
             className="nuts-header__menu-btn"
             aria-label="Menu"
           >
-            <span />
             <span />
             <span />
           </button>

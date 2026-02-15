@@ -12,6 +12,7 @@ import mines from "./imgs/mines.png"
 import tower from "./imgs/tower.png"
 import hilo from "./imgs/hilo.png"
 import limbo from "./imgs/limbo.png"
+import roulette from "./imgs/roulette.png"
 
 export const GAME_TILE_IMAGES = {
   blackjack,
@@ -24,4 +25,5 @@ export const GAME_TILE_IMAGES = {
   tower,
   hilo,
   limbo,
+  roulette,
 }

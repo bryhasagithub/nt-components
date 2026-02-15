@@ -21,11 +21,19 @@
   flex: 1;
   padding: 24px;
   background: var(--bg-main);
+  min-width: 0;
 }
 
 .nuts-page__content {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.nuts-page__footer {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .nuts-page__main--game {

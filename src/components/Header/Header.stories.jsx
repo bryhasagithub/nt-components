@@ -5,6 +5,7 @@ export default {
   component: Header,
   parameters: {
     layout: 'fullscreen',
+    backgrounds: { default: 'nuts (black)' },
   },
   tags: ['autodocs'],
   argTypes: {

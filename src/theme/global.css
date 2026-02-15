@@ -1,7 +1,7 @@
 /* NUTS.GG – match nuts.gg screenshots */
 @font-face {
-  font-family: 'Nuts';
-  src: url('/fonts/nuts-s.p.4cff336c.woff2') format('woff2');
+  font-family: "Nuts";
+  src: url("/fonts/nuts-s.p.4cff336c.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -9,10 +9,10 @@
 
 :root,
 [data-theme="dark"] {
-  --font-nuts: 'Nuts', system-ui, -apple-system, sans-serif;
+  --font-nuts: "Nuts", system-ui, -apple-system, sans-serif;
   /* Real black main area, dark grey header (theme-color from HTML) */
   --bg-primary: #0a0a0a;
-  --bg-main: #000000;
+  --bg-main: #151414;
   --bg-header: #292929;
   --bg-secondary: #1f1f1f;
   --bg-tertiary: #2d2d2d;
@@ -20,10 +20,10 @@
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.9);
   --text-muted: rgba(255, 255, 255, 0.6);
-  --accent-green: #16BD92;
-  --accent-purple: #6A6CFF;
-  --accent-pink: #EA1D5A;
-  --gradient-brand: linear-gradient(90deg, #6A6CFF 0%, #EA1D5A 100%);
+  --accent-green: #16bd92;
+  --accent-purple: #6a6cff;
+  --accent-pink: #ea1d5a;
+  --gradient-brand: linear-gradient(90deg, #6a6cff 0%, #ea1d5a 100%);
   --border-color: rgba(255, 255, 255, 0.15);
   --border-card: rgba(255, 255, 255, 0.2);
   --radius-sm: 6px;

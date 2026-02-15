@@ -5,10 +5,12 @@
   border: none;
   border-radius: var(--radius-sm);
   font-family: var(--font-nuts);
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  transition: opacity 0.2s, transform 0.1s;
+  transition:
+    opacity 0.2s,
+    transform 0.1s;
 }
 
 .nuts-button:not(:disabled):hover {
@@ -25,13 +27,22 @@
 }
 
 .nuts-button--primary {
-  background: var(--accent-green);
-  color: #231F20;
+  background: #0f8f6e;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .nuts-button--primary.nuts-button--medium {
   padding: 10px 22px;
   font-size: 0.9rem;
+}
+
+.nuts-button--primary:not(:disabled):hover {
+  background: #12a67d;
+  opacity: 1;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .nuts-button--secondary {

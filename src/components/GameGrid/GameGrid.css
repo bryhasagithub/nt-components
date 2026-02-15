@@ -1,14 +1,14 @@
-/* Grid on black background – match screenshot */
+/* Grid on black background – match screenshot (3 rows of 4) */
 .nuts-game-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding: 28px 0;
 }
 
 @media (min-width: 640px) {
   .nuts-game-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -17,4 +17,14 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
   }
+}
+
+/* Empty slot matches GameCard structure and styling */
+.nuts-game-grid__empty-slot.nuts-game-card {
+  cursor: default;
+  pointer-events: none;
+}
+
+.nuts-game-grid__empty-slot .nuts-game-card__placeholder {
+  font-size: 0;
 }

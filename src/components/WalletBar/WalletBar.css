@@ -1,0 +1,43 @@
+.nuts-wallet-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  margin-bottom: 28px;
+}
+
+.nuts-wallet-bar__logo {
+  font-family: var(--font-nuts);
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.nuts-wallet-bar__divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-color);
+}
+
+.nuts-wallet-bar__icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nuts-wallet-bar__icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+}
+
+.nuts-wallet-bar__text {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}

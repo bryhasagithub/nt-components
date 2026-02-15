@@ -3,8 +3,7 @@
   top: 0;
   z-index: 100;
   height: var(--header-height);
-  background: var(--bg-header);
-  border-bottom: 1px solid var(--border-color);
+  background: #292929;
 }
 
 .nuts-header__inner {
@@ -20,21 +19,43 @@
 
 .nuts-header__center {
   display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.nuts-header__center .nuts-balance {
+  height: 38px;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  border-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nuts-header__center .nuts-button--primary {
+  height: 38px;
+  min-height: 38px;
+  padding: 0 20px;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  border-color: transparent;
+  display: inline-flex;
   align-items: center;
-  gap: 16px;
 }
 
 .nuts-header__user {
   display: flex;
   align-items: center;
-  gap: 14px;
 }
 
 .nuts-header__username {
   font-family: var(--font-nuts);
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--text-primary);
+  color: var(--text-muted);
+  margin-right: 20px;
+  text-transform: lowercase;
 }
 
 .nuts-header__username:hover {
@@ -44,8 +65,6 @@
 .nuts-header__league {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  background: var(--gradient-brand);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,14 +75,50 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: 50%;
+  display: block;
 }
 
 .nuts-header__league-placeholder {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--bg-header);
+  background: #2f2f2f;
+}
+
+.nuts-header__progress-wrap {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nuts-header__progress-bar {
+  width: 7px;
+  height: 32px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  position: relative;
+  margin-right: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.nuts-header__progress-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--gradient-brand);
+  border-radius: 0 0 3px 3px;
+  min-height: 4px;
+}
+
+.nuts-header .nuts-button--primary {
+  background: #3eff7b;
+  color: #2d2d2d;
+}
+
+.nuts-header .nuts-button--primary:hover {
+  background: #35e96d;
 }
 
 .nuts-header__menu-btn {
@@ -74,6 +129,7 @@
   background: none;
   border: none;
   color: var(--text-primary);
+  cursor: pointer;
 }
 
 .nuts-header__menu-btn span {

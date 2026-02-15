@@ -10,6 +10,9 @@ const GAME_COLORS = {
   mines: '#6d28d9',
   dice: '#f97316',
   tower: '#ea580c',
+  limbo: '#38bdf8',
+  roulette: '#f97316',
+  hilo: '#a78bfa',
   default: '#64748b',
 }
 

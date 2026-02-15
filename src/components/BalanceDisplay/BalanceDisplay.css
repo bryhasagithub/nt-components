@@ -1,19 +1,27 @@
 .nuts-balance {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px 14px;
+  background: #1A1A1A;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  text-align: center;
 }
 
 .nuts-balance__usd {
   font-family: var(--font-nuts);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: var(--text-primary);
+  line-height: 1.2;
 }
 
 .nuts-balance__sol {
   font-family: var(--font-nuts);
   font-size: 0.75rem;
   color: var(--text-muted);
+  line-height: 1.2;
 }

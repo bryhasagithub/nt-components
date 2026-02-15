@@ -1,5 +1,5 @@
 /** @type { import('@storybook/react').Preview } */
-import '../src/theme/global.css'
+import "../src/theme/global.css"
 
 const preview = {
   parameters: {
@@ -10,11 +10,11 @@ const preview = {
       },
     },
     backgrounds: {
-      default: 'nuts',
+      default: "dark",
       values: [
-        { name: 'nuts (black)', value: '#000000' },
-        { name: 'dark', value: '#1a1a1a' },
-        { name: 'light', value: '#f5f5f5' },
+        { name: "nuts (black)", value: "#000000" },
+        { name: "dark", value: "#1a1a1a" },
+        { name: "light", value: "#f5f5f5" },
       ],
     },
   },

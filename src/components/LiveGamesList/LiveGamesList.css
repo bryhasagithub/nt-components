@@ -1,0 +1,130 @@
+.nuts-live-games {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.nuts-live-games__tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nuts-live-games__tab {
+  flex: 1;
+  padding: 14px 20px;
+  font-family: var(--font-nuts);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nuts-live-games__tab:hover {
+  color: var(--text-secondary);
+}
+
+.nuts-live-games__tab--active {
+  color: var(--text-primary);
+  border-bottom-color: var(--text-primary);
+}
+
+.nuts-live-games__list-wrap {
+  overflow-x: auto;
+}
+
+.nuts-live-games__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 520px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.nuts-live-games__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.8125rem;
+}
+
+.nuts-live-games__row:last-child {
+  border-bottom: none;
+}
+
+.nuts-live-games__empty {
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  grid-column: 1 / -1;
+}
+
+.nuts-live-games__total {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.nuts-live-games__game {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nuts-live-games__icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.nuts-live-games__icon-placeholder {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.nuts-live-games__game-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.nuts-live-games__player,
+.nuts-live-games__time {
+  color: var(--text-muted);
+}
+
+.nuts-live-games__multiplier {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.nuts-live-games__result {
+  color: var(--text-muted);
+  font-weight: 600;
+  text-align: right;
+}
+
+.nuts-live-games__result--win {
+  color: var(--accent-purple);
+}
