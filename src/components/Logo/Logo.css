@@ -1,0 +1,14 @@
+.nuts-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-primary);
+}
+
+.nuts-logo .logo-text {
+  font-family: var(--font-nuts);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

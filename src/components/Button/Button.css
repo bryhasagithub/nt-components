@@ -1,0 +1,56 @@
+.nuts-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-nuts);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.nuts-button:not(:disabled):hover {
+  opacity: 0.92;
+}
+
+.nuts-button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+.nuts-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nuts-button--primary {
+  background: var(--accent-green);
+  color: #231F20;
+}
+
+.nuts-button--primary.nuts-button--medium {
+  padding: 10px 22px;
+  font-size: 0.9rem;
+}
+
+.nuts-button--secondary {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.nuts-button--secondary.nuts-button--medium {
+  padding: 10px 22px;
+  font-size: 0.9rem;
+}
+
+.nuts-button--small {
+  padding: 6px 14px;
+  font-size: 0.8rem;
+}
+
+.nuts-button--large {
+  padding: 14px 30px;
+  font-size: 1rem;
+}

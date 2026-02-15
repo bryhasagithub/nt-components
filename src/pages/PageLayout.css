@@ -1,0 +1,33 @@
+.nuts-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-main);
+}
+
+.nuts-page__nav-wrap {
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 24px;
+}
+
+.nuts-page__nav-wrap .nuts-nav {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.nuts-page__main {
+  flex: 1;
+  padding: 24px;
+  background: var(--bg-main);
+}
+
+.nuts-page__content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nuts-page__main--game {
+  padding-top: 24px;
+}

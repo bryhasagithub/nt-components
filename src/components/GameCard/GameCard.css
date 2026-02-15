@@ -1,0 +1,82 @@
+/* Match screenshot: vibrant solid bg, thin light border, white title + NUTS.GG */
+.nuts-game-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 16px;
+  background: var(--game-accent, var(--bg-tertiary));
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  overflow: hidden;
+}
+
+.nuts-game-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* New badge: light blue background, white text (screenshot) */
+.nuts-game-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  background: #38bdf8;
+  color: #ffffff;
+  font-family: var(--font-nuts);
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.nuts-game-card__media {
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.nuts-game-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nuts-game-card__placeholder {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-nuts);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.nuts-game-card__title {
+  font-family: var(--font-nuts);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.nuts-game-card__subtitle {
+  font-family: var(--font-nuts);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 2px;
+}

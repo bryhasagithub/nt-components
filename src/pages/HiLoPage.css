@@ -1,0 +1,224 @@
+.nuts-hilo {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .nuts-hilo {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nuts-hilo__panel {
+  background: var(--bg-header);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  font-family: var(--font-nuts);
+}
+
+.nuts-hilo__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nuts-hilo__cashout {
+  text-align: center;
+  padding: 12px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+}
+
+.nuts-hilo__cashout-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.nuts-hilo__cashout-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.nuts-hilo__cashout-sol {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.nuts-hilo__bet {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nuts-hilo__bet-btn {
+  padding: 8px 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+
+.nuts-hilo__bet-input {
+  flex: 1;
+  min-width: 100px;
+  padding: 10px 14px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nuts-hilo__bet-sol {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.nuts-hilo__game {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.nuts-hilo__tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.nuts-hilo__tab {
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+}
+
+.nuts-hilo__tab--active {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.nuts-hilo__cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.nuts-hilo__choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 24px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  min-width: 140px;
+}
+
+.nuts-hilo__choice-arrow {
+  font-size: 1.5rem;
+}
+
+.nuts-hilo__choice span:not(.nuts-hilo__choice-arrow):not(.nuts-hilo__multiplier) {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.nuts-hilo__multiplier {
+  font-weight: 700;
+  color: var(--accent-green);
+}
+
+.nuts-hilo__current-card {
+  position: relative;
+  width: 120px;
+  height: 168px;
+  background: white;
+  border-radius: 8px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.nuts-hilo__card-deck {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  z-index: -1;
+}
+
+.nuts-hilo__previous {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.nuts-hilo__prev-cards {
+  display: flex;
+  gap: 8px;
+}
+
+.nuts-hilo__mini-card {
+  width: 48px;
+  height: 64px;
+  background: white;
+  border-radius: 4px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.nuts-hilo__start {
+  min-width: 120px;
+}
+
+.nuts-hilo__live {
+  max-width: 900px;
+  margin: 24px auto 0;
+  background: var(--bg-header);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.nuts-hilo__list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.nuts-hilo__list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nuts-hilo__list-icon {
+  margin-right: 8px;
+  color: var(--accent-green);
+}

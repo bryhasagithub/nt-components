@@ -1,0 +1,78 @@
+.nuts-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nuts-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 24px;
+  gap: 24px;
+}
+
+.nuts-header__center {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nuts-header__user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nuts-header__username {
+  font-family: var(--font-nuts);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.nuts-header__username:hover {
+  color: var(--accent-green);
+}
+
+.nuts-header__league {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nuts-header__league-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-header);
+}
+
+.nuts-header__menu-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+}
+
+.nuts-header__menu-btn span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+}
