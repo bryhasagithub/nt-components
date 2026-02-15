@@ -18,9 +18,10 @@
   --bg-tertiary: #2d2d2d;
   --bg-card: #292929;
   --text-primary: #ffffff;
+  --text-dark: #292929;
   --text-secondary: rgba(255, 255, 255, 0.9);
   --text-muted: rgba(255, 255, 255, 0.6);
-  --accent-green: #16bd92;
+  --accent-green: #77ffa8;
   --accent-purple: #6a6cff;
   --accent-pink: #ea1d5a;
   --gradient-brand: linear-gradient(90deg, #6a6cff 0%, #ea1d5a 100%);

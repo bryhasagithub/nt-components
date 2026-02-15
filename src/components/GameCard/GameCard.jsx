@@ -1,24 +1,24 @@
-import React, { useState } from 'react'
-import './GameCard.css'
+import React, { useState } from "react"
+import "./GameCard.css"
 
 const GAME_COLORS = {
-  blackjack: '#7dd3fc',
-  chicken: '#facc15',
-  darts: '#a78bfa',
-  keno: '#84cc16',
-  plinko: '#ec4899',
-  mines: '#6d28d9',
-  dice: '#f97316',
-  tower: '#ea580c',
-  limbo: '#38bdf8',
-  roulette: '#f97316',
-  hilo: '#a78bfa',
-  default: '#64748b',
+  blackjack: "#7dd3fc",
+  chicken: "#facc15",
+  darts: "#a78bfa",
+  keno: "#84cc16",
+  plinko: "#ec4899",
+  mines: "#6d28d9",
+  dice: "#f97316",
+  tower: "#ea580c",
+  limbo: "#38bdf8",
+  roulette: "#f97316",
+  hilo: "#a78bfa",
+  default: "#64748b",
 }
 
 export function GameCard({
   name,
-  href = '#',
+  href = "#",
   imageUrl,
   imageAlt,
   badge,
@@ -27,13 +27,14 @@ export function GameCard({
 }) {
   const [imgError, setImgError] = useState(false)
   const showImg = imageUrl && !imgError
-  const color = accentColor || GAME_COLORS[name?.toLowerCase()] || GAME_COLORS.default
+  const color =
+    accentColor || GAME_COLORS[name?.toLowerCase()] || GAME_COLORS.default
   return (
     <a
       href={href}
       className="nuts-game-card"
       aria-label={name}
-      style={{ '--game-accent': color }}
+      style={{ "--game-accent": color }}
       {...props}
     >
       {badge && <span className="nuts-game-card__badge">{badge}</span>}
@@ -46,11 +47,15 @@ export function GameCard({
             onError={() => setImgError(true)}
           />
         ) : (
-          <div className="nuts-game-card__placeholder">{name?.slice(0, 2) || '??'}</div>
+          <div className="nuts-game-card__placeholder">
+            {name?.slice(0, 2) || "??"}
+          </div>
         )}
       </div>
-      <div className="nuts-game-card__title">{name || 'Game'}</div>
-      <div className="nuts-game-card__subtitle">NUTS.GG</div>
+      <div className="nuts-game-card__textWrapper">
+        <div className="nuts-game-card__title">{name || "Game"}</div>
+        <div className="nuts-game-card__subtitle">NUTS.GG</div>
+      </div>
     </a>
   )
 }
