@@ -4,6 +4,7 @@
   z-index: 100;
   height: var(--header-height);
   background: #292929;
+  min-width: 0;
 }
 
 .nuts-header__inner {
@@ -15,17 +16,25 @@
   margin: 0 auto;
   padding: 0 24px;
   gap: 24px;
+  min-width: 0;
+}
+
+.nuts-header__inner > .nuts-logo {
+  flex-shrink: 0;
 }
 
 .nuts-header__center {
   display: flex;
   align-items: stretch;
   gap: 0;
+  min-width: 0;
 }
 
 .nuts-header__center .nuts-balance {
   height: 38px;
   min-height: 38px;
+  min-width: 0;
+  flex-shrink: 1;
   padding: 0 14px;
   border-radius: var(--radius-md) 0 0 var(--radius-md);
   border-color: transparent;
@@ -47,6 +56,7 @@
 .nuts-header__user {
   display: flex;
   align-items: center;
+  min-width: 0;
 }
 
 .nuts-header__username {
@@ -56,6 +66,11 @@
   color: var(--text-muted);
   margin-right: 16px;
   text-transform: lowercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1 1 0;
 }
 
 .nuts-header__username:hover {
@@ -138,4 +153,22 @@
   height: 2px;
   background: currentColor;
   border-radius: 1px;
+}
+
+@media (max-width: 640px) {
+  .nuts-header__inner {
+    padding: 0 12px;
+    gap: 12px;
+  }
+
+  .nuts-header__username {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .nuts-header__inner {
+    padding: 0 8px;
+    gap: 8px;
+  }
 }

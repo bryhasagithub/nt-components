@@ -22,9 +22,13 @@
   --text-secondary: rgba(255, 255, 255, 0.9);
   --text-muted: rgba(255, 255, 255, 0.6);
   --accent-green: #77ffa8;
-  --accent-purple: #6a6cff;
+  --accent-purple: #782ef8;
   --accent-pink: #ea1d5a;
-  --gradient-brand: linear-gradient(90deg, #6a6cff 0%, #ea1d5a 100%);
+  --gradient-brand: linear-gradient(
+    90deg,
+    rgb(130, 130, 255),
+    rgb(255, 89, 241)
+  );
   --border-color: rgba(255, 255, 255, 0.15);
   --border-card: rgba(255, 255, 255, 0.2);
   --radius-sm: 6px;
@@ -35,6 +39,11 @@
 
 * {
   box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
 
 body {

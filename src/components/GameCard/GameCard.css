@@ -11,7 +11,8 @@
   border-radius: var(--radius-lg);
   color: #ffffff;
   text-decoration: none;
-  height: 270px;
+  height: 250px;
+  max-width: 240px;
   transition:
     transform 0.15s,
     box-shadow 0.15s;
@@ -40,9 +41,10 @@
 }
 
 .nuts-game-card__media {
+  margin-top: 10px;
   width: 100%;
   aspect-ratio: 1;
-  max-width: 140px;
+  max-width: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,14 +81,35 @@
 .nuts-game-card__title {
   font-family: var(--font-nuts);
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
   color: var(--text-dark);
 }
 
 .nuts-game-card__subtitle {
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
   color: var(--text-dark);
   font-size: 0.7rem;
   margin-top: 2px;
+}
+
+@media (min-width: 640px) {
+  .nuts-game-card {
+    max-width: 210px;
+    height: 250px;
+  }
+  .nuts-game-card__media {
+    max-width: 120px;
+  }
+}
+@media (min-width: 900px) {
+  .nuts-game-card {
+    max-width: 280px;
+    height: 320px;
+  }
+  .nuts-game-card__media {
+    max-width: 160px;
+  }
 }

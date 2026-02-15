@@ -9,13 +9,14 @@
 @media (min-width: 640px) {
   .nuts-game-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 }
 
 @media (min-width: 900px) {
   .nuts-game-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 20px;
   }
 }
 

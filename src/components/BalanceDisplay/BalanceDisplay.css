@@ -9,6 +9,7 @@
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   text-align: center;
+  min-width: 0;
 }
 
 .nuts-balance__usd {
@@ -24,4 +25,36 @@
   font-size: 0.75rem;
   color: var(--text-muted);
   line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .nuts-balance {
+    padding: 6px 10px;
+  }
+
+  .nuts-balance__usd {
+    font-size: 0.8125rem;
+  }
+
+  .nuts-balance__sol {
+    font-size: 0.6875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nuts-balance {
+    padding: 5px 8px;
+  }
+
+  .nuts-balance__usd {
+    font-size: 0.75rem;
+  }
+
+  .nuts-balance__sol {
+    font-size: 0.625rem;
+  }
 }
