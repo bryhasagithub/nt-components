@@ -111,6 +111,57 @@
   left: calc(100% - 22px);
 }
 
+/* Difficulty range slider: same track/thumb look */
+.snakes__slider--range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 24px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.snakes__slider--range::-webkit-slider-runnable-track {
+  height: 24px;
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+}
+
+.snakes__slider--range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  background: var(--text-primary);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.snakes__slider--range::-moz-range-track {
+  height: 24px;
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+}
+
+.snakes__slider--range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--text-primary);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.snakes__slider-value {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  font-family: var(--font-nuts);
+  min-width: 4em;
+  text-align: right;
+}
+
 .snakes__field {
   display: flex;
   flex-direction: column;
@@ -262,14 +313,15 @@
   cursor: not-allowed;
 }
 
-/* PLAY: brand gradient (purple → pink), white text, icon on right */
+/* PLAY: brand gradient, text centered in button, icon on right (after the fact) */
 .snakes__play-btn {
   width: 100%;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   padding: 14px 20px;
+  padding-right: 56px; /* space for icon so text stays clear */
   border: none;
   border-radius: var(--radius-md);
   background: var(--gradient-brand);
@@ -288,11 +340,22 @@
   box-shadow: 0 4px 16px rgba(120, 46, 248, 0.35);
 }
 
+/* Text centered in full button width; icon does not affect centering */
 .snakes__play-btn-text {
-  flex: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
 }
 
 .snakes__play-btn-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;

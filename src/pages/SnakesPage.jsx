@@ -13,13 +13,7 @@ const DIFFICULTIES = [
 ]
 
 /* 5x5 grid: center = 2 dice + 1 current-multi tile; multiplier/snake tiles wrap around */
-const GRID_SIZE = 5
-const TOTAL_CELLS = 25
-const PLAY_INDEX = 0
-const DIE1_INDEX = 11
-const DIE2_INDEX = 12
-const MULTI_DISPLAY_INDEX = 17
-const FIXED_INDICES = [PLAY_INDEX, DIE1_INDEX, DIE2_INDEX, MULTI_DISPLAY_INDEX]
+
 const OUTER_INDICES = [1, 2, 3, 4, 5, 9, 10, 14, 15, 19, 20, 21, 22, 23, 24]
 const INNER_INDICES = [6, 7, 8, 13, 16, 18]
 const TILE_GRID_INDICES = [...OUTER_INDICES, ...INNER_INDICES]
@@ -141,10 +135,8 @@ function Die({ value = 1 }) {
 }
 
 export function SnakesPage() {
-  const [mode, setMode] = useState("manual")
   const [amount, setAmount] = useState("0.00")
   const [difficulty, setDifficulty] = useState("medium")
-  const [difficultyOpen, setDifficultyOpen] = useState(false)
   const [board, setBoard] = useState([])
   const [currentMultiplier, setCurrentMultiplier] = useState(1.0)
   const [totalNetGain, setTotalNetGain] = useState("0.00")
@@ -205,6 +197,7 @@ export function SnakesPage() {
     setAmount((n * 2).toFixed(2))
   }
 
+  const difficultyIndex = DIFFICULTIES.findIndex((d) => d.value === difficulty)
   const currentDifficultyLabel =
     DIFFICULTIES.find((d) => d.value === difficulty)?.label ?? "Medium"
 
@@ -213,28 +206,38 @@ export function SnakesPage() {
       <Header balanceUsd="$6.03" balanceSol="0.06998309" />
       <main className="nuts-page__main nuts-page__main--game">
         <div className="snakes">
-          <h2 className="snakes__title snakes__title--mobile" aria-hidden="true">
+          <h2
+            className="snakes__title snakes__title--mobile"
+            aria-hidden="true"
+          >
             SNAKES
           </h2>
           <div className="snakes__panel snakes__controls">
             <h2 className="snakes__title">SNAKES</h2>
 
             <div className="snakes__slider-wrap">
-              <label className="snakes__slider-label" htmlFor="snakes-mode">
-                {mode === "manual" ? "Manual" : "Auto"}
+              <label className="snakes__slider-label" htmlFor="snakes-difficulty">
+                Difficulty
               </label>
-              <button
-                type="button"
-                id="snakes-mode"
-                role="switch"
-                aria-checked={mode === "auto"}
-                className="snakes__slider"
-                onClick={() =>
-                  setMode((m) => (m === "manual" ? "auto" : "manual"))
+              <input
+                type="range"
+                id="snakes-difficulty"
+                className="snakes__slider snakes__slider--range"
+                min={0}
+                max={DIFFICULTIES.length - 1}
+                step={1}
+                value={difficultyIndex >= 0 ? difficultyIndex : 1}
+                onChange={(e) =>
+                  setDifficulty(DIFFICULTIES[Number(e.target.value)]?.value ?? "medium")
                 }
-              >
-                <span className="snakes__slider-thumb" />
-              </button>
+                aria-valuemin={0}
+                aria-valuemax={DIFFICULTIES.length - 1}
+                aria-valuenow={difficultyIndex}
+                aria-valuetext={currentDifficultyLabel}
+              />
+              <span className="snakes__slider-value" aria-hidden="true">
+                {currentDifficultyLabel}
+              </span>
             </div>
 
             <button
@@ -264,47 +267,6 @@ export function SnakesPage() {
             >
               ROLL
             </button>
-
-            <div className="snakes__field">
-              <label className="snakes__label">Difficulty</label>
-              <div className="snakes__select-wrap">
-                <button
-                  type="button"
-                  className="snakes__select"
-                  onClick={() => setDifficultyOpen((o) => !o)}
-                  aria-expanded={difficultyOpen}
-                >
-                  {currentDifficultyLabel}
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </button>
-                {difficultyOpen && (
-                  <div className="snakes__dropdown">
-                    {DIFFICULTIES.map((d) => (
-                      <button
-                        key={d.value}
-                        type="button"
-                        className="snakes__dropdown-item"
-                        onClick={() => {
-                          setDifficulty(d.value)
-                          setDifficultyOpen(false)
-                        }}
-                      >
-                        {d.label}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
 
             <div className="snakes__amount-block">
               <div className="snakes__amount-controls snakes__amount-controls--left">
