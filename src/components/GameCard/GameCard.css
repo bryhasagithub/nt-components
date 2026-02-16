@@ -24,13 +24,13 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* New badge: light blue background, white text (screenshot) */
+/* New badge: theme purple accent (match CLASSIC RISK / site accent) */
 .nuts-game-card__badge {
   position: absolute;
   top: 10px;
   left: 10px;
   padding: 4px 10px;
-  background: #38bdf8;
+  background: var(--accent-purple);
   color: var(--text-primary);
   font-family: var(--font-nuts);
   font-size: 0.65rem;
@@ -61,7 +61,7 @@
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--border-color);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;

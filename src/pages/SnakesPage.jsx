@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from "react"
 import { Header } from "../components/Header/Header"
-import { Button } from "../components/Button/Button"
 import { GameBoard } from "../components/GameBoard/GameBoard"
 import "./PageLayout.css"
 import "./SnakesPage.css"
@@ -33,8 +32,8 @@ const MULTIPLIER_POOL = [
 function shuffle(arr) {
   const a = [...arr]
   for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]]
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
   }
   return a
 }
@@ -93,11 +92,36 @@ function Die({ value = 1 }) {
   const r = 2.2
   const positions = {
     1: [[12, 12]],
-    2: [[8, 8], [16, 16]],
-    3: [[8, 8], [12, 12], [16, 16]],
-    4: [[8, 8], [16, 8], [8, 16], [16, 16]],
-    5: [[8, 8], [16, 8], [12, 12], [8, 16], [16, 16]],
-    6: [[8, 8], [16, 8], [8, 12], [16, 12], [8, 16], [16, 16]],
+    2: [
+      [8, 8],
+      [16, 16],
+    ],
+    3: [
+      [8, 8],
+      [12, 12],
+      [16, 16],
+    ],
+    4: [
+      [8, 8],
+      [16, 8],
+      [8, 16],
+      [16, 16],
+    ],
+    5: [
+      [8, 8],
+      [16, 8],
+      [12, 12],
+      [8, 16],
+      [16, 16],
+    ],
+    6: [
+      [8, 8],
+      [16, 8],
+      [8, 12],
+      [16, 12],
+      [8, 16],
+      [16, 16],
+    ],
   }
   const dots = positions[v] || positions[1]
   return (
@@ -131,7 +155,7 @@ export function SnakesPage() {
 
   const unrevealedIndices = useMemo(
     () => board.map((t, i) => (t.revealed ? -1 : i)).filter((i) => i >= 0),
-    [board]
+    [board],
   )
 
   const canRoll = gameStarted && !gameOver && unrevealedIndices.length > 0
@@ -157,9 +181,7 @@ export function SnakesPage() {
       unrevealedIndices[Math.floor(Math.random() * unrevealedIndices.length)]
     const tile = board[boardIndex]
     setBoard((prev) =>
-      prev.map((t, i) =>
-        i === boardIndex ? { ...t, revealed: true } : t
-      )
+      prev.map((t, i) => (i === boardIndex ? { ...t, revealed: true } : t)),
     )
     setLastRevealedIndex(tile.gridIndex)
     if (tile.type === "snake") {
@@ -192,50 +214,53 @@ export function SnakesPage() {
       <main className="nuts-page__main nuts-page__main--game">
         <div className="snakes">
           <div className="snakes__panel snakes__controls">
-            <div className="snakes__toggle-wrap">
+            <h2 className="snakes__title">SNAKES</h2>
+
+            <div className="snakes__slider-wrap">
+              <label className="snakes__slider-label" htmlFor="snakes-mode">
+                {mode === "manual" ? "Manual" : "Auto"}
+              </label>
               <button
                 type="button"
-                className={`snakes__mode-btn ${mode === "manual" ? "snakes__mode-btn--active" : ""}`}
-                onClick={() => setMode("manual")}
+                id="snakes-mode"
+                role="switch"
+                aria-checked={mode === "auto"}
+                className="snakes__slider"
+                onClick={() =>
+                  setMode((m) => (m === "manual" ? "auto" : "manual"))
+                }
               >
-                Manual
-              </button>
-              <button
-                type="button"
-                className={`snakes__mode-btn ${mode === "auto" ? "snakes__mode-btn--active" : ""}`}
-                onClick={() => setMode("auto")}
-              >
-                Auto
+                <span className="snakes__slider-thumb" />
               </button>
             </div>
 
-            <div className="snakes__field">
-              <label className="snakes__label">Amount</label>
-              <div className="snakes__amount-row">
-                <input
-                  type="text"
-                  className="snakes__input"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  inputMode="decimal"
-                />
-                <span className="snakes__currency">S</span>
-                <button
-                  type="button"
-                  className="snakes__quick-btn"
-                  onClick={handleHalf}
+            <button
+              type="button"
+              className="snakes__play-btn"
+              onClick={handlePlay}
+            >
+              <span className="snakes__play-btn-text">PLAY</span>
+              <span className="snakes__play-btn-icon" aria-hidden>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
                 >
-                  ½
-                </button>
-                <button
-                  type="button"
-                  className="snakes__quick-btn"
-                  onClick={handleDouble}
-                >
-                  2x
-                </button>
-              </div>
-            </div>
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 8v4l2 2" strokeLinecap="round" />
+                </svg>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              className="snakes__roll-btn"
+              onClick={handleRoll}
+              disabled={!canRoll}
+            >
+              ROLL
+            </button>
 
             <div className="snakes__field">
               <label className="snakes__label">Difficulty</label>
@@ -247,7 +272,14 @@ export function SnakesPage() {
                   aria-expanded={difficultyOpen}
                 >
                   {currentDifficultyLabel}
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
                     <path d="M6 9l6 6 6-6" />
                   </svg>
                 </button>
@@ -271,22 +303,49 @@ export function SnakesPage() {
               </div>
             </div>
 
-            <div className="snakes__actions">
-              <Button
-                variant="primary"
-                className="snakes__play-btn"
-                onClick={handlePlay}
-              >
-                Play
-              </Button>
-              <button
-                type="button"
-                className="snakes__roll-btn"
-                onClick={handleRoll}
-                disabled={!canRoll}
-              >
-                Roll
-              </button>
+            <div className="snakes__amount-block">
+              <div className="snakes__amount-controls snakes__amount-controls--left">
+                <button
+                  type="button"
+                  className="snakes__amount-btn"
+                  onClick={() =>
+                    setAmount((n) =>
+                      Math.max(0, (parseFloat(n) || 0) - 0.01).toFixed(2),
+                    )
+                  }
+                >
+                  −
+                </button>
+                <button
+                  type="button"
+                  className="snakes__amount-btn snakes__amount-btn--minmax"
+                  onClick={() => setAmount("0.01")}
+                >
+                  MIN
+                </button>
+              </div>
+              <div className="snakes__amount-display">
+                <span className="snakes__amount-usd">${amount}</span>
+                <span className="snakes__amount-sol">0.00000010 SOL</span>
+              </div>
+              <div className="snakes__amount-controls snakes__amount-controls--right">
+                <button
+                  type="button"
+                  className="snakes__amount-btn"
+                  onClick={() =>
+                    setAmount((n) => ((parseFloat(n) || 0) + 0.01).toFixed(2))
+                  }
+                >
+                  +
+                </button>
+                <button
+                  type="button"
+                  className="snakes__amount-btn snakes__amount-btn--minmax"
+                  onClick={() => setAmount("100.00")}
+                >
+                  MAX
+                </button>
+              </div>
             </div>
 
             <div className="snakes__field">
@@ -295,37 +354,7 @@ export function SnakesPage() {
               </label>
               <div className="snakes__gain-row">
                 <span className="snakes__gain-value">{totalNetGain}</span>
-                <span className="snakes__currency">S</span>
               </div>
-            </div>
-
-            <div className="snakes__util-icons">
-              <span className="snakes__util-icon" aria-hidden>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <circle cx="12" cy="12" r="3" />
-                  <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-                </svg>
-              </span>
-              <span className="snakes__util-icon" aria-hidden>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <rect x="3" y="3" width="7" height="7" />
-                  <rect x="14" y="3" width="7" height="7" />
-                  <rect x="14" y="14" width="7" height="7" />
-                  <rect x="3" y="14" width="7" height="7" />
-                </svg>
-              </span>
-              <span className="snakes__util-icon" aria-hidden>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M3 3v18h18" />
-                  <path d="M18 17V9M13 17V5M8 17v-3" />
-                </svg>
-              </span>
-              <span className="snakes__util-icon" aria-hidden>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M18 13v6a2 2 0 01-2 2H8a2 2 0 01-2-2v-6" />
-                  <path d="M12 15V3M12 3l4 4M12 3L8 7" />
-                </svg>
-              </span>
             </div>
           </div>
 

@@ -1,11 +1,12 @@
-/* Centered container, dark background for crypto casino look */
+/* Centered container – match site theme (dark grey panels like CLASSIC RISK) */
 .game-board {
   width: 100%;
   max-width: min(420px, 100%);
   margin: 0 auto;
   padding: 24px 16px 16px;
-  background: #1c232a;
-  border-radius: 24px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
 }
 
 /* 4 columns, equal square tiles, 16px gap, fixed aspect ratio */
@@ -41,7 +42,7 @@
   height: 100%;
 }
 
-/* Pagination dots below grid */
+/* Pagination dots below grid – theme muted/primary */
 .game-board__pagination {
   display: flex;
   justify-content: center;
@@ -53,9 +54,9 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--border-color);
 }
 
 .game-board__dot--active {
-  background: rgba(255, 255, 255, 0.45);
+  background: var(--text-muted);
 }

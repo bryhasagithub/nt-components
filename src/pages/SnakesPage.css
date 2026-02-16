@@ -24,38 +24,64 @@
 .snakes__controls {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
-.snakes__toggle-wrap {
+.snakes__title {
+  margin: 0;
+  font-family: var(--font-nuts);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Slider: thin grey track, white circular handle (CLASSIC RISK style) */
+.snakes__slider-wrap {
   display: flex;
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-sm);
-  padding: 4px;
-  gap: 4px;
+  align-items: center;
+  gap: 12px;
 }
 
-.snakes__mode-btn {
-  flex: 1;
-  padding: 10px 14px;
-  border: none;
-  border-radius: var(--radius-sm);
-  background: transparent;
+.snakes__slider-label {
+  font-size: 0.8rem;
   color: var(--text-muted);
   font-family: var(--font-nuts);
-  font-size: 0.9rem;
-  font-weight: 500;
+  min-width: 3.5em;
+}
+
+.snakes__slider {
+  flex: 1;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: var(--bg-tertiary);
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  position: relative;
+  transition: background 0.15s;
 }
 
-.snakes__mode-btn:hover {
-  color: var(--text-primary);
+.snakes__slider:hover {
+  background: var(--border-color);
 }
 
-.snakes__mode-btn--active {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
+.snakes__slider-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: left 0.2s;
+}
+
+.snakes__slider[aria-checked="true"] .snakes__slider-thumb {
+  left: calc(100% - 22px);
 }
 
 .snakes__field {
@@ -116,7 +142,9 @@
   font-family: var(--font-nuts);
   font-size: 0.85rem;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
 }
 
 .snakes__quick-btn:hover {
@@ -180,29 +208,19 @@
   background: var(--bg-secondary);
 }
 
-.snakes__actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.snakes__play-btn {
-  width: 100%;
-  padding: 14px 20px;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
+/* ROLL: grey button above PLAY */
 .snakes__roll-btn {
   width: 100%;
-  padding: 12px 20px;
+  padding: 10px 16px;
   background: var(--bg-tertiary);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   color: var(--text-primary);
   font-family: var(--font-nuts);
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
 }
@@ -215,6 +233,120 @@
 .snakes__roll-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* PLAY: brand gradient, white text, icon on right (CLASSIC RISK style) */
+.snakes__play-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--gradient-brand);
+  color: var(--text-dark);
+  font-family: var(--font-nuts);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: filter 0.15s, box-shadow 0.15s;
+}
+
+.snakes__play-btn:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 4px 16px rgba(120, 46, 248, 0.35);
+}
+
+.snakes__play-btn-text {
+  flex: 1;
+}
+
+.snakes__play-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  color: var(--text-dark);
+}
+
+.snakes__play-btn-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Amount block: three distinct segments — left (−/MIN), center (wager), right (+/MAX) */
+.snakes__amount-block {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.snakes__amount-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.snakes__amount-btn {
+  width: 44px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-family: var(--font-nuts);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.snakes__amount-btn:hover {
+  background: var(--bg-secondary);
+}
+
+.snakes__amount-btn--minmax {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.snakes__amount-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 10px 16px;
+  min-width: 120px;
+  flex: 1;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+.snakes__amount-usd {
+  font-family: var(--font-nuts);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.snakes__amount-sol {
+  font-size: 0.7rem;
+  color: var(--text-muted);
 }
 
 .snakes__gain-row {
@@ -249,7 +381,9 @@
   color: var(--text-muted);
   cursor: pointer;
   border-radius: var(--radius-sm);
-  transition: color 0.15s, background 0.15s;
+  transition:
+    color 0.15s,
+    background 0.15s;
 }
 
 .snakes__util-icon:hover {

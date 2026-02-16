@@ -1,14 +1,16 @@
-/* Base tile: dark blue-gray, rounded, neumorphic */
+/* Base tile: theme tertiary grey – subtle shadow (darker bottom/right, minimal depth) */
 .game-board-tile {
-  --tile-bg: #2f4a56;
-  --tile-radius: 24px;
-  --tile-text: rgba(255, 255, 255, 0.95);
-  --tile-shadow-outer: 0 4px 12px rgba(0, 0, 0, 0.35),
-    0 2px 4px rgba(0, 0, 0, 0.2);
-  --tile-shadow-inner: inset 0 1px 2px rgba(255, 255, 255, 0.06),
-    inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+  --tile-bg: var(--bg-tertiary);
+  --tile-radius: var(--radius-lg);
+  --tile-text: var(--text-primary);
+  /* Subtle depth: darker on bottom and right, like a slight extrusion */
+  --tile-shadow-outer: 2px 2px 6px rgba(0, 0, 0, 0.25);
+  --tile-shadow-inner:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 1px 1px 0 0 rgba(0, 0, 0, 0.12);
 
   background: var(--tile-bg);
+  border: 1px solid var(--border-color);
   border-radius: var(--tile-radius);
   box-shadow: var(--tile-shadow-inner), var(--tile-shadow-outer);
   display: flex;
@@ -16,6 +18,8 @@
   justify-content: center;
   min-height: 0;
   position: relative;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .game-board-tile__text {
@@ -25,33 +29,32 @@
   letter-spacing: 0.02em;
 }
 
-/* Play: blue triangle */
+/* Play: brand gradient (purple → magenta) */
 .game-board-tile__play-icon {
-  width: 0;
-  height: 0;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  border-left: 20px solid #3b82f6;
+  width: 24px;
+  height: 24px;
   margin-left: 4px;
+  background: var(--gradient-brand);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
 
-/* Trophy: minimal icon */
-.game-board-tile__trophy-icon {
-  width: 28px;
-  height: 28px;
-  background: transparent
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.9)' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2h8v4a4 4 0 01-8 0V2z'/%3E%3Cpath d='M12 6v4'/%3E%3Cpath d='M6 10H4a2 2 0 01-2-2V6h4'/%3E%3Cpath d='M20 10h-2V6h4a2 2 0 01-2 2z'/%3E%3Cpath d='M6 14v4a2 2 0 002 2h8a2 2 0 002-2v-4'/%3E%3Cpath d='M8 18h8'/%3E%3Cpath d='M9 22h6'/%3E%3C/svg%3E")
-    center/contain no-repeat;
+/* Nuts icon: minimal B&W for non-multi (trophy) tiles */
+.game-board-tile__nut-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--tile-text);
 }
 
-/* Active center: thick border, inset inner, dice + value */
+/* Active center: purple highlight with strong color-coordinated shadow (bottom/right depth) */
 .game-board-tile--active {
-  --active-border: rgba(255, 255, 255, 0.35);
-  --active-inner-bg: #243a44;
-  --active-value-bg: #1a2a32;
+  --active-border: var(--accent-purple);
+  --active-inner-bg: var(--bg-tertiary);
+  --active-value-bg: var(--bg-secondary);
+  /* Strong 3D shadow: darker purple along bottom and right, light from top-left */
+  --active-shadow: 4px 4px 0 rgba(45, 15, 75, 0.85), 5px 5px 12px rgba(45, 15, 75, 0.5);
 
   background: transparent;
-  box-shadow: none;
+  box-shadow: var(--active-shadow);
   border: 3px solid var(--active-border);
   border-radius: var(--tile-radius);
   padding: 10px;
@@ -89,9 +92,10 @@
   height: clamp(37px, 12vmin, 61px);
   min-width: 37px;
   min-height: 37px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25),
+  background: var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
@@ -102,7 +106,8 @@
   width: clamp(7px, 2.1vmin, 12px);
   height: clamp(7px, 2.1vmin, 12px);
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--text-primary);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
 }
 
 .game-board-tile__active-value {
@@ -110,7 +115,7 @@
   max-width: 100%;
   padding: 8px 12px;
   background: var(--active-value-bg);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;

@@ -36,7 +36,7 @@ export function GameGrid({ games = DEFAULT_GAMES }) {
             <div
               key={game.key || "empty"}
               className="nuts-game-grid__empty-slot nuts-game-card"
-              style={{ "--game-accent": "#64748b" }}
+              style={{ "--game-accent": "var(--bg-tertiary)" }}
               aria-hidden="true"
             >
               <div className="nuts-game-card__media">
