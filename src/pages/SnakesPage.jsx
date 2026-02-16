@@ -213,6 +213,9 @@ export function SnakesPage() {
       <Header balanceUsd="$6.03" balanceSol="0.06998309" />
       <main className="nuts-page__main nuts-page__main--game">
         <div className="snakes">
+          <h2 className="snakes__title snakes__title--mobile" aria-hidden="true">
+            SNAKES
+          </h2>
           <div className="snakes__panel snakes__controls">
             <h2 className="snakes__title">SNAKES</h2>
 

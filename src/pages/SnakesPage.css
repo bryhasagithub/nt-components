@@ -10,6 +10,28 @@
 @media (max-width: 768px) {
   .snakes {
     grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Mobile: title at top, then board, then controls */
+  .snakes__title--mobile {
+    display: block;
+    order: 0;
+    padding: 12px 20px 0;
+  }
+
+  .snakes__board-wrap {
+    order: 1;
+  }
+
+  .snakes__controls {
+    order: 2;
+  }
+
+  /* Hide duplicate title inside controls panel on mobile */
+  .snakes__controls .snakes__title {
+    display: none;
   }
 }
 
@@ -36,6 +58,11 @@
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+}
+
+/* Mobile-only title at top of screen (hidden on desktop) */
+.snakes__title--mobile {
+  display: none;
 }
 
 /* Slider: thin grey track, white circular handle (CLASSIC RISK style) */
@@ -235,7 +262,7 @@
   cursor: not-allowed;
 }
 
-/* PLAY: brand gradient, white text, icon on right (CLASSIC RISK style) */
+/* PLAY: brand gradient (purple → pink), white text, icon on right */
 .snakes__play-btn {
   width: 100%;
   display: flex;
@@ -499,6 +526,7 @@
   display: flex;
   gap: 8px;
   justify-content: center;
+  user-select: none;
 }
 
 .snakes__dot {
@@ -508,6 +536,7 @@
   background: var(--bg-tertiary);
   border: 1px solid var(--border-color);
   transition: background 0.15s;
+  user-select: none;
 }
 
 .snakes__dot--active {
