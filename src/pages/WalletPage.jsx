@@ -882,17 +882,19 @@ function TipsPanel() {
                   <RankIcon rankKey={person.rank} />
                 </span>
                 <span className="wallet-tips__row-name">{person.username}</span>
-                <span className="wallet-tips__row-given">
-                  {person.tipsGiven}
-                </span>
-                <span className="wallet-tips__row-received">
-                  {person.tipsReceived}
-                </span>
-                <span
-                  className={`wallet-tips__row-net ${person.net.startsWith("-") ? "wallet-tips__row-net--negative" : "wallet-tips__row-net--positive"}`}
-                >
-                  {person.net}
-                </span>
+                <div className="wallet-tips__row-amounts">
+                  <span className="wallet-tips__row-given">
+                    {person.tipsGiven}
+                  </span>
+                  <span className="wallet-tips__row-received">
+                    {person.tipsReceived}
+                  </span>
+                  <span
+                    className={`wallet-tips__row-net ${person.net.startsWith("-") ? "wallet-tips__row-net--negative" : "wallet-tips__row-net--positive"}`}
+                  >
+                    {person.net}
+                  </span>
+                </div>
                 <span className="wallet-tips__row-arrow">
                   <ArrowIcon />
                 </span>
@@ -1088,9 +1090,12 @@ export function WalletPage() {
       <Header balanceUsd={balanceUsd} balanceSol={balanceSol} showDeposit />
       <main className="nuts-page__main nuts-page__main--wallet">
         <div className="wallet-layout">
-          <aside className="wallet-layout__nav">
+          <aside className="wallet-layout__nav" aria-label="Wallet sections">
             <WalletNav active={section} onSelect={setSection} />
           </aside>
+          <div className="wallet-layout__nav-top" aria-label="Wallet sections">
+            <WalletNav active={section} onSelect={setSection} />
+          </div>
           <div className="wallet-layout__content">{renderPanel()}</div>
         </div>
       </main>
