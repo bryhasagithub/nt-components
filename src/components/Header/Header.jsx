@@ -9,7 +9,13 @@ const menuItems = [
   { label: "WALLET", href: "wallet", icon: "wallet" },
   { label: "ACCOUNT", href: "account", icon: "account" },
   { label: "PERKS", href: "perks", icon: "perks" },
-  { label: "AFFILIATE", href: "affiliate", icon: "affiliate", highlight: true, cta: "EARN" },
+  {
+    label: "AFFILIATE",
+    href: "affiliate",
+    icon: "affiliate",
+    highlight: true,
+    cta: "EARN",
+  },
   { label: "PROVABLY FAIR", href: "provably-fair", icon: "provably" },
   { label: "GAME LOG", href: "game-log", icon: "gamelog" },
   { label: "SUPPORT", href: "support", icon: "support" },
@@ -19,7 +25,16 @@ function MenuIcon({ name }) {
   const size = 20
   const stroke = "currentColor"
   const strokeWidth = 1.5
-  const common = { width: size, height: size, viewBox: `0 0 ${size} ${size}`, fill: "none", stroke, strokeWidth, strokeLinecap: "round", strokeLinejoin: "round" }
+  const common = {
+    width: size,
+    height: size,
+    viewBox: `0 0 ${size} ${size}`,
+    fill: "none",
+    stroke,
+    strokeWidth,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+  }
   switch (name) {
     case "wallet":
       return (
@@ -113,7 +128,7 @@ export function Header({
   return (
     <header className="nuts-header">
       <div className="nuts-header__inner">
-        <Logo href="." />
+        <Logo href="/nt-components/" />
         <div className="nuts-header__center">
           <BalanceDisplay usd={balanceUsd} sol={balanceSol} />
           {showDeposit && (
@@ -170,15 +185,28 @@ export function Header({
         role="dialog"
         aria-label="User menu"
       >
-        <div className="nuts-header__dropdown-backdrop" onClick={() => setMenuOpen(false)} aria-hidden />
+        <div
+          className="nuts-header__dropdown-backdrop"
+          onClick={() => setMenuOpen(false)}
+          aria-hidden
+        />
         <div className="nuts-header__dropdown-panel" ref={menuRef}>
           <div className="nuts-header__dropdown-header">
             <span className="nuts-header__dropdown-username">{username}</span>
             <div className="nuts-header__dropdown-rank">
               {showRankImg ? (
-                <img src={rankIconUrl} alt="" width={32} height={32} onError={() => setRankIconError(true)} />
+                <img
+                  src={rankIconUrl}
+                  alt=""
+                  width={32}
+                  height={32}
+                  onError={() => setRankIconError(true)}
+                />
               ) : (
-                <span className="nuts-header__league-placeholder" style={{ width: 32, height: 32 }} />
+                <span
+                  className="nuts-header__league-placeholder"
+                  style={{ width: 32, height: 32 }}
+                />
               )}
             </div>
             <button
@@ -187,7 +215,15 @@ export function Header({
               aria-label="Close menu"
               onClick={() => setMenuOpen(false)}
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
                 <path d="M12 4L4 12M4 4l8 8" />
               </svg>
             </button>
@@ -202,7 +238,9 @@ export function Header({
                 <span className="nuts-header__dropdown-icon">
                   <MenuIcon name={item.icon} />
                 </span>
-                <span className="nuts-header__dropdown-label">{item.label}</span>
+                <span className="nuts-header__dropdown-label">
+                  {item.label}
+                </span>
                 {item.cta && (
                   <span className="nuts-header__dropdown-cta">{item.cta}</span>
                 )}
