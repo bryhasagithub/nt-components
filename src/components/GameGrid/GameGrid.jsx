@@ -1,21 +1,30 @@
-import React from 'react'
-import { GameCard } from '../GameCard/GameCard'
-import { GAME_TILE_IMAGES } from '../../lib/gameTileImgs'
-import './GameGrid.css'
+import React from "react"
+import { GameCard } from "../GameCard/GameCard"
+import { GAME_TILE_IMAGES } from "../../lib/gameTileImgs"
+import "./GameGrid.css"
 
 const DEFAULT_GAMES = [
-  { name: 'Blackjack', href: '/blackjack', badge: 'New', accentColor: '#7dd3fc' },
-  { name: 'Chicken', href: '/chicken', accentColor: '#fde047' },
-  { name: 'Darts', href: '/darts', accentColor: '#a78bfa' },
-  { name: 'Keno', href: '/keno', accentColor: '#86efac' },
-  { name: 'Plinko', href: '/plinko', accentColor: '#f472b6' },
-  { name: 'Mines', href: '/mines', accentColor: '#e8794a' },
-  { name: 'Dice', href: '/dice', accentColor: '#86efac' },
-  { name: 'Tower', href: '/tower', accentColor: '#ea580c' },
-  { name: 'Limbo', href: '/limbo', accentColor: '#38bdf8' },
-  { name: 'Roulette', href: '/roulette', accentColor: '#f97316' },
-  { name: 'Hilo', href: '/hilo', accentColor: '#a78bfa' },
-  { isPlaceholder: true, key: 'empty' },
+  {
+    name: "Blackjack",
+    href: "/nt-components/blackjack",
+    badge: "New",
+    accentColor: "#7dd3fc",
+  },
+  { name: "Chicken", href: "/nt-components/chicken", accentColor: "#fde047" },
+  { name: "Darts", href: "/nt-components/darts", accentColor: "#a78bfa" },
+  { name: "Keno", href: "/nt-components/keno", accentColor: "#86efac" },
+  { name: "Plinko", href: "/nt-components/plinko", accentColor: "#f472b6" },
+  { name: "Mines", href: "/nt-components/mines", accentColor: "#ff6d57" },
+  { name: "Dice", href: "/nt-components/dice", accentColor: "#86efac" },
+  { name: "Tower", href: "/nt-components/tower", accentColor: "#ff8f45" },
+  { name: "Limbo", href: "/nt-components/limbo", accentColor: "#38bdf8" },
+  {
+    name: "Roulette",
+    href: "/nt-components/roulette",
+    accentColor: "#7b95c7",
+  },
+  { name: "Hilo", href: "/nt-components/hilo", accentColor: "#a78bfa" },
+  { name: "Snakes", href: "/nt-components/snakes", accentColor: "#f794e0" },
 ]
 
 export function GameGrid({ games = DEFAULT_GAMES }) {
@@ -25,9 +34,9 @@ export function GameGrid({ games = DEFAULT_GAMES }) {
         if (game.isPlaceholder) {
           return (
             <div
-              key={game.key || 'empty'}
+              key={game.key || "empty"}
               className="nuts-game-grid__empty-slot nuts-game-card"
-              style={{ '--game-accent': '#64748b' }}
+              style={{ "--game-accent": "#64748b" }}
               aria-hidden="true"
             >
               <div className="nuts-game-card__media">

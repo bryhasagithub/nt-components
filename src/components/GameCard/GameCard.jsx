@@ -13,6 +13,7 @@ const GAME_COLORS = {
   limbo: "#38bdf8",
   roulette: "#f97316",
   hilo: "#a78bfa",
+  snakes: "#f794e0",
   default: "#64748b",
 }
 
