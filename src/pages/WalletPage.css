@@ -806,6 +806,12 @@ button.wallet-tips__list-header-cell:hover {
   margin-right: 0.35em;
 }
 
+@media (min-width: 769px) {
+  .wallet-tips__row-prefix {
+    display: none;
+  }
+}
+
 .wallet-tips__row-value {
   color: var(--text-primary);
 }
@@ -1137,7 +1143,7 @@ button.wallet-tips__list-header-cell:hover {
 
   .wallet-tips__row-amounts .wallet-tips__row-given,
   .wallet-tips__row-amounts .wallet-tips__row-received {
-    font-size: 0.75rem;
+    display: none;
   }
 
   .wallet-tips__row-amounts .wallet-tips__row-net {
