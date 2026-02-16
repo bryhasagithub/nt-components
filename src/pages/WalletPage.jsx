@@ -211,30 +211,90 @@ const TIPS_BY_PERSON = [
 const CURRENT_USER_NAME = "You"
 const TIPS_TRANSACTIONS_BY_USER = {
   ElmoTheDad: [
-    { date: "14/02/26", amount: "$120.00", sender: "ElmoTheDad", receiver: CURRENT_USER_NAME },
-    { date: "12/02/26", amount: "$186.20", sender: CURRENT_USER_NAME, receiver: "ElmoTheDad" },
-    { date: "10/02/26", amount: "$200.00", sender: CURRENT_USER_NAME, receiver: "ElmoTheDad" },
+    {
+      date: "14/02/26",
+      amount: "$120.00",
+      sender: "ElmoTheDad",
+      receiver: CURRENT_USER_NAME,
+    },
+    {
+      date: "12/02/26",
+      amount: "$186.20",
+      sender: CURRENT_USER_NAME,
+      receiver: "ElmoTheDad",
+    },
+    {
+      date: "10/02/26",
+      amount: "$200.00",
+      sender: CURRENT_USER_NAME,
+      receiver: "ElmoTheDad",
+    },
   ],
   Brandondoan1: [
-    { date: "15/02/26", amount: "$95.00", sender: "Brandondoan1", receiver: CURRENT_USER_NAME },
-    { date: "11/02/26", amount: "$210.50", sender: CURRENT_USER_NAME, receiver: "Brandondoan1" },
+    {
+      date: "15/02/26",
+      amount: "$95.00",
+      sender: "Brandondoan1",
+      receiver: CURRENT_USER_NAME,
+    },
+    {
+      date: "11/02/26",
+      amount: "$210.50",
+      sender: CURRENT_USER_NAME,
+      receiver: "Brandondoan1",
+    },
   ],
   CryptoKing: [
-    { date: "13/02/26", amount: "$312.40", sender: "CryptoKing", receiver: CURRENT_USER_NAME },
-    { date: "09/02/26", amount: "$85.00", sender: CURRENT_USER_NAME, receiver: "CryptoKing" },
+    {
+      date: "13/02/26",
+      amount: "$312.40",
+      sender: "CryptoKing",
+      receiver: CURRENT_USER_NAME,
+    },
+    {
+      date: "09/02/26",
+      amount: "$85.00",
+      sender: CURRENT_USER_NAME,
+      receiver: "CryptoKing",
+    },
   ],
   SolanaFan: [
-    { date: "08/02/26", amount: "$45.20", sender: CURRENT_USER_NAME, receiver: "SolanaFan" },
+    {
+      date: "08/02/26",
+      amount: "$45.20",
+      sender: CURRENT_USER_NAME,
+      receiver: "SolanaFan",
+    },
   ],
   RainMaker: [
-    { date: "14/02/26", amount: "$180.90", sender: "RainMaker", receiver: CURRENT_USER_NAME },
+    {
+      date: "14/02/26",
+      amount: "$180.90",
+      sender: "RainMaker",
+      receiver: CURRENT_USER_NAME,
+    },
   ],
   ChipStack: [
-    { date: "12/02/26", amount: "$184.00", sender: "ChipStack", receiver: CURRENT_USER_NAME },
-    { date: "10/02/26", amount: "$336.60", sender: CURRENT_USER_NAME, receiver: "ChipStack" },
+    {
+      date: "12/02/26",
+      amount: "$184.00",
+      sender: "ChipStack",
+      receiver: CURRENT_USER_NAME,
+    },
+    {
+      date: "10/02/26",
+      amount: "$336.60",
+      sender: CURRENT_USER_NAME,
+      receiver: "ChipStack",
+    },
   ],
   klop: [
-    { date: "07/02/26", amount: "$89.40", sender: CURRENT_USER_NAME, receiver: "klop" },
+    {
+      date: "07/02/26",
+      amount: "$89.40",
+      sender: CURRENT_USER_NAME,
+      receiver: "klop",
+    },
   ],
 }
 
@@ -760,7 +820,9 @@ function TipsPanel() {
     if (!sortBy) return 0
     let cmp = 0
     if (sortBy === "name") {
-      cmp = a.username.localeCompare(b.username, undefined, { sensitivity: "base" })
+      cmp = a.username.localeCompare(b.username, undefined, {
+        sensitivity: "base",
+      })
     } else if (sortBy === "tipsGiven") {
       cmp = parseCurrency(a.tipsGiven) - parseCurrency(b.tipsGiven)
     } else if (sortBy === "tipsReceived") {
@@ -783,21 +845,27 @@ function TipsPanel() {
           <span className="wallet-tips__tile-value wallet-tips__tile-value--currency">
             {summary.totalTipsGiven}
           </span>
-          <span className="wallet-tips__tile-sol">{summary.totalTipsGivenSol} SOL</span>
+          <span className="wallet-tips__tile-sol">
+            {summary.totalTipsGivenSol} SOL
+          </span>
         </div>
         <div className="wallet-tips__tile">
           <span className="wallet-tips__tile-label">Total tips received</span>
           <span className="wallet-tips__tile-value wallet-tips__tile-value--currency">
             {summary.totalTipsReceived}
           </span>
-          <span className="wallet-tips__tile-sol">{summary.totalTipsReceivedSol} SOL</span>
+          <span className="wallet-tips__tile-sol">
+            {summary.totalTipsReceivedSol} SOL
+          </span>
         </div>
         <div className="wallet-tips__tile">
           <span className="wallet-tips__tile-label">Total tip net value</span>
           <span className="wallet-tips__tile-value wallet-tips__tile-value--currency">
             {summary.totalTipNet}
           </span>
-          <span className="wallet-tips__tile-sol">{summary.totalTipNetSol} SOL</span>
+          <span className="wallet-tips__tile-sol">
+            {summary.totalTipNetSol} SOL
+          </span>
         </div>
         <div className="wallet-tips__tile">
           <span className="wallet-tips__tile-label">Tips given</span>
@@ -824,7 +892,7 @@ function TipsPanel() {
         <div className="wallet-tips__search-wrap">
           <input
             type="text"
-            placeholder="Type username"
+            placeholder="Search by username"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="wallet-panel__input wallet-tips__search"
@@ -852,14 +920,16 @@ function TipsPanel() {
               className={`wallet-tips__list-header-cell wallet-tips__list-header-cell--sortable ${sortBy === "tipsGiven" ? "wallet-tips__list-header-cell--sorted" : ""}`}
               onClick={() => handleSort("tipsGiven")}
             >
-              Tips given {sortBy === "tipsGiven" && (sortDir === "asc" ? "↑" : "↓")}
+              Tips given{" "}
+              {sortBy === "tipsGiven" && (sortDir === "asc" ? "↑" : "↓")}
             </button>
             <button
               type="button"
               className={`wallet-tips__list-header-cell wallet-tips__list-header-cell--sortable ${sortBy === "tipsReceived" ? "wallet-tips__list-header-cell--sorted" : ""}`}
               onClick={() => handleSort("tipsReceived")}
             >
-              Tips received {sortBy === "tipsReceived" && (sortDir === "asc" ? "↑" : "↓")}
+              Tips received{" "}
+              {sortBy === "tipsReceived" && (sortDir === "asc" ? "↑" : "↓")}
             </button>
             <button
               type="button"
@@ -884,15 +954,18 @@ function TipsPanel() {
                 <span className="wallet-tips__row-name">{person.username}</span>
                 <div className="wallet-tips__row-amounts">
                   <span className="wallet-tips__row-given">
-                    {person.tipsGiven}
+                    <span className="wallet-tips__row-prefix">Sent:</span>
+                    <span className="wallet-tips__row-value">{person.tipsGiven}</span>
                   </span>
                   <span className="wallet-tips__row-received">
-                    {person.tipsReceived}
+                    <span className="wallet-tips__row-prefix">Received:</span>
+                    <span className="wallet-tips__row-value">{person.tipsReceived}</span>
                   </span>
                   <span
                     className={`wallet-tips__row-net ${person.net.startsWith("-") ? "wallet-tips__row-net--negative" : "wallet-tips__row-net--positive"}`}
                   >
-                    {person.net}
+                    <span className="wallet-tips__row-prefix">Net:</span>
+                    <span className="wallet-tips__row-value">{person.net}</span>
                   </span>
                 </div>
                 <span className="wallet-tips__row-arrow">
@@ -919,7 +992,10 @@ function UserTipModal({ user, transactions, onClose }) {
   const [copyToast, setCopyToast] = useState(false)
 
   const copyTransaction = (tx) => {
-    const text = `${tx.date} | ${tx.sender} sent ${tx.amount} to ${tx.receiver}`
+    const isSent = tx.sender === CURRENT_USER_NAME
+    const amountStr =
+      isSent && !tx.amount.startsWith("-") ? `-${tx.amount}` : tx.amount
+    const text = `${tx.date} | ${isSent ? "Sent" : "Received"} | ${amountStr}`
     navigator.clipboard?.writeText(text).then(() => {
       setCopyToast(true)
       setTimeout(() => setCopyToast(false), 2000)
@@ -927,8 +1003,17 @@ function UserTipModal({ user, transactions, onClose }) {
   }
 
   return (
-    <div className="wallet-tips-modal" role="dialog" aria-modal="true" aria-labelledby="wallet-tips-modal-title">
-      <div className="wallet-tips-modal__backdrop" onClick={onClose} aria-hidden />
+    <div
+      className="wallet-tips-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="wallet-tips-modal-title"
+    >
+      <div
+        className="wallet-tips-modal__backdrop"
+        onClick={onClose}
+        aria-hidden
+      />
       <div className="wallet-tips-modal__panel">
         <div className="wallet-tips-modal__header">
           <h2 id="wallet-tips-modal-title" className="wallet-tips-modal__title">
@@ -940,7 +1025,14 @@ function UserTipModal({ user, transactions, onClose }) {
             aria-label="Close"
             onClick={onClose}
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M12 4L4 12M4 4l8 8" />
             </svg>
           </button>
@@ -949,43 +1041,76 @@ function UserTipModal({ user, transactions, onClose }) {
         <div className="wallet-tips-modal__summary">
           <div className="wallet-tips-modal__tile">
             <span className="wallet-tips-modal__tile-label">Total given</span>
-            <span className="wallet-tips-modal__tile-value wallet-tips-modal__tile-value--currency">{user.tipsGiven}</span>
+            <span className="wallet-tips-modal__tile-value wallet-tips-modal__tile-value--currency">
+              {user.tipsGiven}
+            </span>
           </div>
           <div className="wallet-tips-modal__tile">
-            <span className="wallet-tips-modal__tile-label">Total received</span>
-            <span className="wallet-tips-modal__tile-value wallet-tips-modal__tile-value--currency">{user.tipsReceived}</span>
+            <span className="wallet-tips-modal__tile-label">
+              Total received
+            </span>
+            <span className="wallet-tips-modal__tile-value wallet-tips-modal__tile-value--currency">
+              {user.tipsReceived}
+            </span>
           </div>
           <div className="wallet-tips-modal__tile">
-            <span className="wallet-tips-modal__tile-label"># of transactions</span>
-            <span className="wallet-tips-modal__tile-value">{transactions.length}</span>
+            <span className="wallet-tips-modal__tile-label">
+              # of transactions
+            </span>
+            <span className="wallet-tips-modal__tile-value wallet-tips-modal__tile-value--currency">
+              {transactions.length}
+            </span>
           </div>
         </div>
 
-        <div className="wallet-panel__heading wallet-tips-modal__list-heading">All tips</div>
+        <div className="wallet-panel__heading wallet-tips-modal__list-heading">
+          All tips
+        </div>
         <div className="wallet-tips-modal__list-wrap">
           <div className="wallet-tips-modal__list-header">
             <span className="wallet-tips-modal__list-header-cell">Date</span>
-            <span className="wallet-tips-modal__list-header-cell">Amount</span>
-            <span className="wallet-tips-modal__list-header-cell">Sender</span>
-            <span className="wallet-tips-modal__list-header-cell">Receiver</span>
+            <span className="wallet-tips-modal__list-header-cell">
+              Sent / Received
+            </span>
+            <span className="wallet-tips-modal__list-header-cell">Value</span>
           </div>
           <div className="wallet-tips-modal__list">
             {transactions.length === 0 ? (
-              <p className="wallet-tips-modal__empty">No tip history with this user.</p>
+              <p className="wallet-tips-modal__empty">
+                No tip history with this user.
+              </p>
             ) : (
-              transactions.map((tx, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  className="wallet-tips-modal__row"
-                  onClick={() => copyTransaction(tx)}
-                >
-                  <span className="wallet-tips-modal__row-cell">{tx.date}</span>
-                  <span className="wallet-tips-modal__row-cell wallet-tips-modal__row-cell--amount">{tx.amount}</span>
-                  <span className="wallet-tips-modal__row-cell">{tx.sender}</span>
-                  <span className="wallet-tips-modal__row-cell">{tx.receiver}</span>
-                </button>
-              ))
+              transactions.map((tx, i) => {
+                const isSent = tx.sender === CURRENT_USER_NAME
+                return (
+                  <button
+                    key={i}
+                    type="button"
+                    className="wallet-tips-modal__row"
+                    onClick={() => copyTransaction(tx)}
+                  >
+                    <span className="wallet-tips-modal__row-cell">
+                      {tx.date}
+                    </span>
+                    <span className="wallet-tips-modal__row-cell wallet-tips-modal__row-cell--type">
+                      {isSent ? "Sent" : "Received"}
+                    </span>
+                    <span
+                      className={`wallet-tips-modal__row-cell wallet-tips-modal__row-cell--amount ${
+                        isSent
+                          ? "wallet-tips-modal__row-cell--amount-sent"
+                          : "wallet-tips-modal__row-cell--amount-received"
+                      }`}
+                    >
+                      {isSent
+                        ? tx.amount.startsWith("-")
+                          ? tx.amount
+                          : `-${tx.amount}`
+                        : tx.amount}
+                    </span>
+                  </button>
+                )
+              })
             )}
           </div>
         </div>

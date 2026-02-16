@@ -168,8 +168,6 @@
   position: relative;
   max-width: 560px;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
   background: var(--bg-tertiary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
@@ -801,7 +799,15 @@ button.wallet-tips__list-header-cell:hover {
 .wallet-tips__row-given,
 .wallet-tips__row-received {
   font-size: 0.8rem;
+}
+
+.wallet-tips__row-prefix {
   color: var(--text-muted);
+  margin-right: 0.35em;
+}
+
+.wallet-tips__row-value {
+  color: var(--text-primary);
 }
 
 .wallet-tips__row-net {
@@ -809,12 +815,15 @@ button.wallet-tips__list-header-cell:hover {
   font-weight: 600;
 }
 
-.wallet-tips__row-net--positive {
-  color: var(--accent-green);
+.wallet-tips__row-net--positive .wallet-tips__row-value {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.wallet-tips__row-net--negative {
-  color: var(--text-muted);
+.wallet-tips__row-net--negative .wallet-tips__row-value {
+  color: var(--text-primary);
 }
 
 .wallet-tips__row-arrow {
@@ -925,7 +934,8 @@ button.wallet-tips__list-header-cell:hover {
   color: var(--text-primary);
 }
 
-.wallet-tips-modal__tile-value--currency {
+.wallet-tips-modal__tile-value--currency,
+.wallet-tips-modal .wallet-tips-modal__tile-value--currency {
   font-size: 1rem;
   background: var(--gradient-brand);
   -webkit-background-clip: text;
@@ -947,7 +957,7 @@ button.wallet-tips__list-header-cell:hover {
 
 .wallet-tips-modal__list-header {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   padding: 0 4px 8px 4px;
   margin-bottom: 6px;
@@ -976,7 +986,7 @@ button.wallet-tips__list-header-cell:hover {
 
 .wallet-tips-modal__row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   padding: 8px 10px;
   background: var(--bg-tertiary);
@@ -995,12 +1005,26 @@ button.wallet-tips__list-header-cell:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
+.wallet-tips-modal__row-cell--type {
+  color: var(--text-muted);
+  font-size: 0.75em;
+}
+
 .wallet-tips-modal__row-cell--amount {
   font-weight: 600;
+}
+
+.wallet-tips-modal__row-cell--amount-received,
+.wallet-tips-modal .wallet-tips-modal__row-cell--amount-received {
   background: var(--gradient-brand);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: transparent !important;
+}
+
+.wallet-tips-modal__row-cell--amount-sent,
+.wallet-tips-modal .wallet-tips-modal__row-cell--amount-sent {
+  color: var(--text-primary);
 }
 
 .wallet-tips-modal__toast {
@@ -1076,7 +1100,7 @@ button.wallet-tips__list-header-cell:hover {
   .wallet-tips__list-header,
   .wallet-tips__row {
     grid-template-columns: 36px 1fr auto;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto;
     gap: 6px 10px;
     align-items: center;
   }
@@ -1088,7 +1112,6 @@ button.wallet-tips__list-header-cell:hover {
   }
 
   .wallet-tips__row-rank {
-    grid-row: 1;
     grid-column: 1;
     width: 36px;
     height: 36px;
@@ -1100,19 +1123,16 @@ button.wallet-tips__list-header-cell:hover {
   }
 
   .wallet-tips__row-name {
-    grid-row: 1;
     grid-column: 2;
     font-size: 0.95rem;
   }
 
   .wallet-tips__row-amounts {
-    grid-row: 2;
-    grid-column: 1 / -1;
+    grid-column: 3;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px 16px;
-    padding-left: 44px; /* align with name (36 + 8) */
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
   }
 
   .wallet-tips__row-amounts .wallet-tips__row-given,
@@ -1125,8 +1145,7 @@ button.wallet-tips__list-header-cell:hover {
   }
 
   .wallet-tips__row-arrow {
-    grid-row: 1;
-    grid-column: 3;
+    display: none;
   }
 }
 
@@ -1140,8 +1159,7 @@ button.wallet-tips__list-header-cell:hover {
   }
 
   .wallet-tips__row-amounts {
-    padding-left: 0;
-    gap: 8px 12px;
+    gap: 3px;
   }
 }
 
@@ -1208,14 +1226,14 @@ button.wallet-tips__list-header-cell:hover {
   }
 
   .wallet-tips-modal__list-header {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     font-size: 0.55rem;
     gap: 4px;
     padding: 0 2px 6px 2px;
   }
 
   .wallet-tips-modal__row {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 4px 6px;
     padding: 10px 8px;
     font-size: 0.75rem;
@@ -1233,54 +1251,5 @@ button.wallet-tips__list-header-cell:hover {
 
   .wallet-tips-modal__tile:nth-child(3) {
     grid-column: 1;
-  }
-
-  /* Stack transaction columns on very small screens: 2x2 grid */
-  .wallet-tips-modal__list-header {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-  }
-
-  .wallet-tips-modal__list-header
-    .wallet-tips-modal__list-header-cell:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  .wallet-tips-modal__list-header
-    .wallet-tips-modal__list-header-cell:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .wallet-tips-modal__list-header
-    .wallet-tips-modal__list-header-cell:nth-child(3) {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  .wallet-tips-modal__list-header
-    .wallet-tips-modal__list-header-cell:nth-child(4) {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .wallet-tips-modal__row {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-  }
-
-  .wallet-tips-modal__row .wallet-tips-modal__row-cell:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  .wallet-tips-modal__row .wallet-tips-modal__row-cell:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .wallet-tips-modal__row .wallet-tips-modal__row-cell:nth-child(3) {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  .wallet-tips-modal__row .wallet-tips-modal__row-cell:nth-child(4) {
-    grid-column: 2;
-    grid-row: 2;
   }
 }
