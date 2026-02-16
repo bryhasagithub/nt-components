@@ -66,3 +66,15 @@ To match the reference screenshots, add your assets as follows:
 - CSS (no UI framework)
 
 Theme follows nuts.gg: dark background, green accent `#16BD92`, purple–pink gradient, SOL balance display.
+
+## Deploy to GitHub Pages
+
+The app is configured to run at `https://<username>.github.io/nt-components/` (project page). If your repo name is different, set the same value in `vite.config.js` as `base`.
+
+1. **Push the repo to GitHub** (if you haven’t already).
+2. **Turn on GitHub Pages**: repo **Settings → Pages → Build and deployment → Source** = **GitHub Actions**.
+3. **Deploy**:
+   - **From CI**: Push to `main` or `master`; the workflow builds and deploys to GitHub Pages.
+   - **From your machine**: run `npm run deploy` (builds and pushes the `dist` folder to the `gh-pages` branch). If you use this, set **Pages → Source** to **Deploy from a branch**, branch **gh-pages**, folder **/ (root)**.
+
+After deployment, the app is at **https://\<username\>.github.io/nt-components/** (home) and **https://\<username\>.github.io/nt-components/wallet** (wallet).

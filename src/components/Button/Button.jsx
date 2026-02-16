@@ -7,11 +7,12 @@ export function Button({
   size = 'medium',
   disabled = false,
   as: Component = 'button',
+  className,
   ...props
 }) {
   return (
     <Component
-      className={`nuts-button nuts-button--${variant} nuts-button--${size}`}
+      className={['nuts-button', `nuts-button--${variant}`, `nuts-button--${size}`, className].filter(Boolean).join(' ')}
       disabled={disabled}
       {...props}
     >

@@ -22,7 +22,7 @@ export function PromoCards({ cards = DEFAULT_CARDS }) {
   return (
     <div className="nuts-promo-cards">
       {cards.map((card) => (
-        <a key={card.title} href="/" className="nuts-promo-card">
+        <a key={card.title} href="." className="nuts-promo-card">
           <div className="nuts-promo-card__media">
             <img src={card.imageUrl} alt={card.imageAlt} className="nuts-promo-card__img" />
           </div>
