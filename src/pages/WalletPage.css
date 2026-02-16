@@ -1013,7 +1013,6 @@ button.wallet-tips__list-header-cell:hover {
 
 .wallet-tips-modal__row-cell--type {
   color: var(--text-muted);
-  font-size: 0.75em;
 }
 
 .wallet-tips-modal__row-cell--amount {
